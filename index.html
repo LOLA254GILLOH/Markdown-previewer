@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Markdown Previewer</title>
+	<script src="./js/mark.js"></script>
+	<script>
+		function updatePreview () {
+			document.getElementById('preview').innerHTML = marked.parse(document.getElementById('editor').value)
+		}
+
+		function setDefault () {
+			let defaultText = `\
+# Codez by Ladze
+## Markdown Previewer
+[Learn more about Codez by Ladze](http://www.codezbyladze.org).
+<dl>
+	<dt>Definition list</dt>
+	<dd>Is something people use sometimes.</dd>
+
+	<dt>Markdown in HTML</dt>
+	<dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
+</dl>
+
+\`Thank you for watching\`
+
+\`\`\`
+function exampleOf() {
+	return multiLineCodeBlock;
+}
+\`\`\`
+
+- Code
+- All
+- Day
+
+> Learn to be a great coder
+
+![Codez by Ladze](https://img.freepik.com/free-photo/computer-program-coding-screen_53876-138060.jpg?w=740&t=st=1711103657~exp=1711104257~hmac=604af1f75e224edd28963d801e0ab84a26ec167278bfaa7e9f89f8b168f1f417)
+
+**Bolded Text**
+			`;
+			let editorField = document.getElementById("editor");
+			let previewElement = document.getElementById("preview");
+			editorField.value = defaultText;
+			previewElement.innerHTML = marked.parse(defaultText);
+		}
+	</script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body onload="setDefault()">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col text-center text-white bg-success">
+				<h1>Markdown Previewer by Ladze</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-6 bg-primary-subtle d-flex flex-column">
+				<h2>Editor</h2>
+				<div class="form-group flex-grow-1 d-flex flex-column">
+					<textarea id="editor" onkeyup="updatePreview()" class="form-control flex-grow-1"></textarea>
+				</div>
+				
+			</div>
+			<div class="col-6 bg-secondary-subtle">
+				<h2>Markdown Previewer:</h2>
+				<div id="preview"></div>
+			</div>
+		</div>
+		
+	</div>
+	
+
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+	<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+</body>
+</html>
